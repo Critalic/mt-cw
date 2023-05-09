@@ -4,7 +4,6 @@ import static org.example.utils.GaussUtils.backSubstitute;
 
 public class GaussianS {
     public double[] solveSystem(double[][] matrix) {
-        long startS = System.currentTimeMillis();
 
         for (int i = 0; i < matrix.length; i++) {
             normalize(i, matrix);
@@ -16,8 +15,7 @@ public class GaussianS {
                 }
             }
         }
-        long timeS = System.currentTimeMillis() - startS;
-        System.out.println("Time for elimination Sequential - " + timeS);
+
 
         return backSubstitute(matrix);
     }

@@ -11,10 +11,10 @@ public class GaussianFJ {
     public double[] solveSystem(double[][] matrix, int rowsPerThread) {
         ForkJoinPool pool = ForkJoinPool.commonPool();
         long startS = System.currentTimeMillis();
-        double[][] m = pool.invoke(new PivotBatched(matrix, rowsPerThread));
+        pool.invoke(new PivotRecur(matrix, rowsPerThread));
         long timeS = System.currentTimeMillis() - startS;
         System.out.println("Time for elimination FJ - " + timeS);
 
-        return backSubstitute(m);
+        return backSubstitute(matrix);
     }
 }

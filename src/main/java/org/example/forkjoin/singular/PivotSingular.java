@@ -21,7 +21,7 @@ public class PivotSingular extends RecursiveTask<double[][]> {
 
             List<CalculatorSingularTask> calculators = new ArrayList<>();
 
-            for (int r = i; r < matrix.length; r++) {
+            for (int r = i; r < matrix.length-i; r++) {
                 CalculatorSingularTask calculator = new CalculatorSingularTask(
                         matrix[r],
                         matrix[i - 1].clone(), i);

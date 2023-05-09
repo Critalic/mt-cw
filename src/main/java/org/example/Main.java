@@ -10,14 +10,14 @@ public class Main {
     public static void main(String[] args) {
         GaussianFJ gaussianFJ = new GaussianFJ();
         GaussianS gaussianS = new GaussianS();
-        double[][] matrix = new MatrixGenerator().generate(4000, 3);
+        double[][] matrix = new MatrixGenerator().generate(2000, 5);
         double[][] matrix2 = deepClone(matrix);
 //        print(matrix);
 
 
 
         long startFJ = System.currentTimeMillis();
-        double[] res1 = gaussianFJ.solveSystem(matrix, 4000);
+        double[] res1 = gaussianFJ.solveSystem(matrix, 1000);
         long timeFJ = System.currentTimeMillis() - startFJ;
         System.out.println("Time for FJ - " + timeFJ);
 //        print(matrix);
