@@ -1,15 +1,17 @@
-package org.example.forkjoin;
+package org.example.forkjoin.threadOriented;
 
 import java.util.Arrays;
 import java.util.concurrent.RecursiveAction;
 
 public class PivotRecur extends RecursiveAction {
     private final double[][] matrix;
-    private final int rowsPerThread;
+    private final int threads;
+    private final int minimalRowsThread;
 
-    public PivotRecur(double[][] matrix, int rowsPerThread) {
+    public PivotRecur(double[][] matrix, int threads, int minimalRowsThread) {
         this.matrix = matrix;
-        this.rowsPerThread = rowsPerThread;
+        this.threads = threads;
+        this.minimalRowsThread = minimalRowsThread;
     }
 
     @Override
@@ -17,7 +19,9 @@ public class PivotRecur extends RecursiveAction {
         for (int i = 1; i <= matrix.length; i++) {
 //            normalize(i - 1);
 
-            new Recurring(Arrays.copyOfRange(matrix, i, matrix.length), matrix[i-1], i, rowsPerThread).fork().join();
+            int rowsPerThread = Math.floorDiv(matrix.length, threads);
+            new Recurring(Arrays.copyOfRange(matrix, i, matrix.length), matrix[i-1].clone(), i-1,
+                    Math.max(rowsPerThread, minimalRowsThread)).invoke();
         }
     }
 

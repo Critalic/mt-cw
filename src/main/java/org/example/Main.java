@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.forkjoin.GaussianFJ;
+import org.example.forkjoin.threadOriented.GaussianFJ;
 import org.example.sequential.GaussianS;
 import org.example.utils.MatrixGenerator;
 
@@ -11,13 +11,13 @@ public class Main {
         GaussianFJ gaussianFJ = new GaussianFJ();
         GaussianS gaussianS = new GaussianS();
         double[][] matrix = new MatrixGenerator().generate(2000, 5);
-        double[][] matrix2 = deepClone(matrix);
+        double[][] matrix2  = deepClone(matrix);
 //        print(matrix);
 
 
 
         long startFJ = System.currentTimeMillis();
-        double[] res1 = gaussianFJ.solveSystem(matrix, 1000);
+        double[] res1 = gaussianFJ.solveSystem(matrix, 3, 1000);
         long timeFJ = System.currentTimeMillis() - startFJ;
         System.out.println("Time for FJ - " + timeFJ);
 //        print(matrix);
