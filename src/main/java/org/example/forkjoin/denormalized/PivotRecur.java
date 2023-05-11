@@ -1,4 +1,4 @@
-package org.example.forkjoin;
+package org.example.forkjoin.denormalized;
 
 import java.util.Arrays;
 import java.util.concurrent.RecursiveAction;
@@ -15,17 +15,7 @@ public class PivotRecur extends RecursiveAction {
     @Override
     protected void compute() {
         for (int i = 1; i <= matrix.length; i++) {
-//            normalize(i - 1);
-
             new Recurring(Arrays.copyOfRange(matrix, i, matrix.length), matrix[i-1], i, rowsPerThread).fork().join();
         }
-    }
-
-    private void normalize(int row) {
-        double pivot = matrix[row][row];
-        for (int j = row; j < matrix[row].length; j++) {
-            matrix[row][j] /= pivot;
-        }
-        matrix[row][row] = 1;
     }
 }

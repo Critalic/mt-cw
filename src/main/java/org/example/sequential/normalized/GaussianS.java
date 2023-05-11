@@ -1,4 +1,4 @@
-package org.example.sequential;
+package org.example.sequential.normalized;
 
 import static org.example.utils.GaussUtils.backSubstitute;
 
@@ -7,13 +7,12 @@ public class GaussianS {
         long startS = System.currentTimeMillis();
 
         for (int i = 0; i < matrix.length; i++) {
-//            normalize(i, matrix);
+            normalize(i, matrix);
 
-            for (int r = i+1; r < matrix.length; r++) {
+            for (int r = i + 1; r < matrix.length; r++) {
                 double scale = matrix[r][i];
-                double divisor = matrix[i][i];
                 for (int j = i; j < matrix[r].length; j++) {
-                    matrix[r][j] -= matrix[i][j]/divisor * scale;
+                    matrix[r][j] -= matrix[i][j] * scale;
                 }
             }
         }

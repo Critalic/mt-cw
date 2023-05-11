@@ -1,7 +1,4 @@
-package org.example.forkjoin;
-
-import org.example.forkjoin.batch.PivotBatched;
-import org.example.forkjoin.singular.PivotSingular;
+package org.example.forkjoin.denormalized;
 
 import java.util.concurrent.ForkJoinPool;
 

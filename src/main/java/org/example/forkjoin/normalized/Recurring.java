@@ -1,4 +1,4 @@
-package org.example.forkjoin.threadOriented;
+package org.example.forkjoin.normalized;
 
 import java.util.Arrays;
 import java.util.concurrent.RecursiveAction;
@@ -32,9 +32,8 @@ public class Recurring extends RecursiveAction {
         } else {
             for (double[] row : matrix) {
                 double scale = row[iteration];
-                double divisor = pivot[iteration];
-                for (int j = 0; j < row.length; j++) {
-                    row[j] -= (pivot[j]/divisor) * scale;
+                for (int j = iteration; j < row.length; j++) {
+                    row[j] -= pivot[j] * scale;
                 }
             }
         }

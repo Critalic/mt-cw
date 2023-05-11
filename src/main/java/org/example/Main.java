@@ -1,7 +1,7 @@
 package org.example;
 
-import org.example.forkjoin.threadOriented.GaussianFJ;
-import org.example.sequential.GaussianS;
+import org.example.forkjoin.normalized.GaussianFJ;
+import org.example.sequential.denormalized.GaussianS;
 import org.example.utils.MatrixGenerator;
 
 import java.util.Arrays;
@@ -10,14 +10,14 @@ public class Main {
     public static void main(String[] args) {
         GaussianFJ gaussianFJ = new GaussianFJ();
         GaussianS gaussianS = new GaussianS();
-        double[][] matrix = new MatrixGenerator().generate(2000, 5);
+        double[][] matrix = new MatrixGenerator().generate(8000, 5);
         double[][] matrix2  = deepClone(matrix);
 //        print(matrix);
 
 
 
         long startFJ = System.currentTimeMillis();
-        double[] res1 = gaussianFJ.solveSystem(matrix, 3, 1000);
+        double[] res1 = gaussianFJ.solveSystem(matrix, 20, 1000);
         long timeFJ = System.currentTimeMillis() - startFJ;
         System.out.println("Time for FJ - " + timeFJ);
 //        print(matrix);

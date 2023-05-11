@@ -1,4 +1,4 @@
-package org.example.forkjoin.threadOriented;
+package org.example.forkjoin.normalized;
 
 import java.util.concurrent.ForkJoinPool;
 
